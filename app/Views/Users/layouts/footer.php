@@ -7,7 +7,7 @@
                         <div class="footer-infor">
                             <div class="footer-logo">
                                 <a href="index.html">
-                                    <img src="assets/Users/images/logo/z6319734382361_b7be911be93c11ecaa48f94083baab10.jpg" alt="Logo">
+                                    <img src="assets/Users/images/logo/logo2_bestbalo.jpg" alt="Logo">
                                 </a>
                             </div>
                             <ul>

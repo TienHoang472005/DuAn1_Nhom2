@@ -3,7 +3,7 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/logo/z6319850146806_130c4496cfa350e241462e1742a8c7a2.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/logo/slideshow1.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <a href="?act=shop" class="fade-item fade-item-3 tf-btn btn-fill animate-hover-btn btn-xl radius-3">
@@ -15,7 +15,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/slider/fashion-slideshow-02.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/logo/slideshow2.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <h1 class="fade-item fade-item-1">Phong Cách<br class="md-hidden">Đơn Giản</h1>
@@ -29,7 +29,7 @@
             </div>
             <div class="swiper-slide">
                 <div class="wrap-slider">
-                    <img src="assets/Users/images/slider/fashion-slideshow-03.jpg" alt="fashion-slideshow">
+                    <img src="assets/Users/images/logo/slideshow3.jpg" alt="fashion-slideshow">
                     <div class="box-content">
                         <div class="container">
                             <h1 class="fade-item fade-item-1">Phong Cách<br>Hào Nhoáng</h1>
