@@ -94,19 +94,19 @@
                                     ?>
                                     <div class="title-box"
                                         style="background: radial-gradient(circle at top, gray, blue);
-                                     color: black; 
-                                     border: 3px solid black; 
-                                     border-radius: 15px;
-                                     width: 200px; 
-                                     height: 50px;
-                                     color:white; 
-                                     padding-left: 10px;
-                                     font-size: 18px; 
-                                     font-weight: bold; 
-                                     font-family: Arial, sans-serif; 
-                                     text-align: center; 
-                                     line-height: 10px;">
-                                        Chỉnh Sửa danh mục
+                                            color: black; 
+                                            border: 3px solid black; 
+                                            border-radius: 15px;
+                                            width: 200px; 
+                                            height: 50px;
+                                            color:white; 
+                                            padding-left: 10px;
+                                            font-size: 18px; 
+                                            font-weight: bold; 
+                                            font-family: Arial, sans-serif; 
+                                            text-align: center; 
+                                            line-height: 10px;">
+                                            Chỉnh Sửa danh mục
                                     </div>
                                     <form action="?role=admin&act=update-post-category&id=<?= $_GET['id'] ?>" method="post" enctype="multipart/form-data">
 
@@ -127,12 +127,12 @@
 
                                         <button class="btn btn-warning"
                                             style='width: 100px;
-                                        background-color: blue;
-                                        height:30px;
-                                        margin-top:10px;
-                                        border-radius:10px;
-                                        border: 2px solid black;
-                                        font-size:15px;
+                                                background-color: blue;
+                                                height:30px;
+                                                margin-top:10px;
+                                                border-radius:10px;
+                                                border: 2px solid black;
+                                                font-size:15px;
                                         '>Sửa</button>
                                     </form>
                                 </div>

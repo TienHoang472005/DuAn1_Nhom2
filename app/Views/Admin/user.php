@@ -122,11 +122,11 @@
                                                                 <i class="icon-edit-3"></i>
                                                             </a>
                                                         </div>
-                                                        <div class="item trash">
+                                                        <!-- <div class="item trash">
                                                             <a href="?role=admin&act=delete-user&id=<?= $value->id ?>">
                                                                 <i class="icon-trash-2"></i>
                                                             </a>
-                                                        </div>
+                                                        </div> -->
                                                     </div>
                                                 </li>
                                             <?php endforeach; ?>

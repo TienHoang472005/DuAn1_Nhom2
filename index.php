@@ -25,10 +25,11 @@ include 'app/Database/Database.php';
     include 'app/Controllers/Admin/CategoryController.php';
     include 'app/Controllers/Admin/OrderController.php';
     
-
-
     // User
+    include 'app/Controllers/Users/LoginUserController.php';
+    include 'app/Controllers/Users/DashboardController.php';
 
+    // const BASE_URL = "http://localhost/DuAn1_Nhom2/";
 // Router 
 include 'router/web.php';
 

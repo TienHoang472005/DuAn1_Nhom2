@@ -5,7 +5,13 @@ $act = isset($_GET['act']) ? $_GET['act'] : "";
 
 // Đăng nhập user
 if ($role == "user") {
-        echo "Trang client"; 
+    switch($act){
+        case '': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->dashboard();
+            break;
+        }
+    }
 } else {
     // Đăng nhập Admin
     switch ($act) {
