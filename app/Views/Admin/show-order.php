@@ -63,6 +63,11 @@
                                                             <input type="hidden" name="order_id" value="<?= $order->id ?>">
                                                             <select name="status" class="status-select">
                                                                 <option value="pending" <?= $order->status == "pending" ? "selected" : "" ?>>Chờ xử lý</option>
+                                                                <option value="confirmed" <?= $order->status == "confirmed" ? "selected" : "" ?>>Đã xác nhận</option>
+                                                                <option value="packed" <?= $order->status == "packed" ? "selected" : "" ?>>Đã đóng gói</option>
+                                                                <option value="shipped" <?= $order->status == "shipped" ? "selected" : "" ?>>Đã giao cho đơn vị vận chuyển</option>
+                                                                <option value="shipping" <?= $order->status == "shipping" ? "selected" : "" ?>>Đang giao hàng</option>
+                                                                <option value="delivered" <?= $order->status == "delivered" ? "selected" : "" ?>>Giao hàng thành công</option>
                                                                 <option value="completed" <?= $order->status == "completed" ? "selected" : "" ?>>Đã hoàn thành</option>
                                                                 <option value="canceled" <?= $order->status == "canceled" ? "selected" : "" ?>>Đã hủy</option>
                                                             </select>
