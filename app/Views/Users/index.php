@@ -58,7 +58,7 @@
                     <div class="col-xl-9 col-lg-8 col-md-8">
                         <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="2" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="false" data-auto-play="false">
                             <div class="swiper-wrapper">
-                                <!-- <?php foreach($listCategory as $key => $value): ?>
+                                 <?php foreach($listCategory as $key => $value): ?>
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
@@ -73,7 +73,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <?php endforeach; ?> -->
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
@@ -95,10 +95,59 @@
                     <span class="title wow fadeInUp" data-wow-delay="0s">Sản Phẩm Bán Chạy</span>
                     <p class="sub-title wow fadeInUp" data-wow-delay="0s">Cập nhật xu hướng mới nhất với các sản phẩm hot</p>
                 </div>
+                <div class="grid-layout loadmore-item wow fadeInUp" data-wow-delay="0s" data-grid="grid-4">
+                    <!-- card product 1 -->
+                    <?php foreach($listProduct as $key => $value): ?>
+                    <div class="card-product fl-item">
+                        <div class="card-product-wrapper">
+                            <a href="?act=product-detail&product_id=<?= $value->id ?>" class="product-img">
+                                <img class="lazyload img-product" data-src="<?= $value->image_main ?>" src="<?= $value->image_main ?>" alt="image-product">
+                                <img class="lazyload img-hover" data-src="<?= $value->image_main ?>" src="<?= $value->image_main ?>" alt="image-product">
+                            </a>
+                            <div class="list-product-btn">
+                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
+                                    <span class="icon icon-bag"></span>
+                                    <span class="tooltip">Thêm vào giỏ hàng</span>
+                                </a>
+                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
+                                    <span class="icon icon-heart"></span>
+                                    <span class="tooltip">Yêu Thích</span>
+                                    <span class="icon icon-delete"></span>
+                                </a>
+                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
+                                    <span class="icon icon-view"></span>
+                                    <span class="tooltip">Xem Sản phẩm</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="card-product-info">
+                            <a href="?act=product-detail&product_id=<?= $value->id ?>" class="title link"><?= $value->name ?></a>
+                            <div style="display: flex;">
+                                
+                                <?php if($value->price_sale != null): ?>
+                                    <span class="price" style="margin-right: 5px; text-decoration: line-through; ">
+                                    <?= number_format($value->price) ?> VND
+                                    </span>
+
+                                    <span class="price price-sale">    
+                                        <?= number_format($value->price_sale) ?> VND
+                                    </span>
+                                    <?php else: ?>
+                                        <span class="price" style="margin-right: 5px;"> 
+                                            <?= number_format($value->price) ?> VND
+                                        </span>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                    <!-- /card product 1 -->
+                </div>
                 
                 <div class="tf-pagination-wrap view-more-button text-center">
                     <button class="tf-btn-loading tf-loading-default style-2 btn-loadmore "><span class="text">Xem thêm</span></button>
                 </div>
+                
             </div>
         </section>
         <!-- /Sản Phẩm Bán Chạy -->
