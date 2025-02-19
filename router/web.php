@@ -11,6 +11,18 @@ if ($role == "user") {
             $dashBoardController->dashboard();
             break;
         }
+
+        case 'login': {
+            $loginController = new LoginUserController();
+            $loginController->login();
+            break;
+        }
+
+        case 'post-login': {
+            $loginController = new LoginUserController();
+            $loginController->postLogin();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin

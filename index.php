@@ -13,6 +13,7 @@ include 'app/Database/Database.php';
     include 'app/Models/Admin/OrderModel.php';
 
     // User
+    include 'app/Models/Users/LoginModel.php';
 
 
 // Controller

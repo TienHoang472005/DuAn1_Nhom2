@@ -1,5 +1,14 @@
 <div class="tf-slideshow slider-effect-fade position-relative"> 
-    <div dir="ltr" class="swiper tf-sw-slideshow" data-preview="1" data-tablet="1" data-mobile="1" data-centered="false" data-space="0" data-loop="true" data-auto-play="false" data-delay="0" data-speed="1000">
+<div dir="ltr" class="swiper tf-sw-slideshow" 
+    data-preview="1" 
+    data-tablet="1" 
+    data-mobile="1" 
+    data-centered="false" 
+    data-space="0" 
+    data-loop="true" 
+    data-auto-play="true" 
+    data-delay="3000" 
+    data-speed="1000">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
                 <div class="wrap-slider">
