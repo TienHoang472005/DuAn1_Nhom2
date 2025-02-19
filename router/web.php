@@ -23,6 +23,12 @@ if ($role == "user") {
             $loginController->postLogin();
             break;
         }
+
+        case 'logout': {
+            $loginController = new LoginUserController();
+            $loginController->logout();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin

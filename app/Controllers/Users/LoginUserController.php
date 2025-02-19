@@ -22,5 +22,13 @@ class LoginUserController{
               exit;
           }
       } 
-  }
+    }
+
+    public function logout(){
+      if(isset($_SESSION['users'])){
+          unset($_SESSION['users']);
+      }
+      header("Location: " . "?act");
+      exit;
+    }
 }
