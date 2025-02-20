@@ -89,7 +89,13 @@ class DashboardController
             echo json_encode($data);
         }
     }
-    
+
+    public function showToCart(){
+        $cartModel = new CartUserModel();
+        $data = $cartModel->showCartModel();
+        echo json_encode($data);
+    }
+
     public function shoppingCart()
     {
         $cartModel = new CartUserModel();
