@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="col-xl-3 col-md-4 col-6">
-                <a href="?act" class="logo-header">
+                <a href="index.php" class="logo-header">
                     <img src="assets/Users/images/logo/logo_bestbalo.png" alt="logo" class="logo">
                 </a>
             </div>
@@ -47,8 +47,8 @@
                             </ul>
                         </li>
                         <li class="nav-cart">
-                            <a href="#" data-bs-toggle="modal" class="nav-icon-item">
-                                <i class="icon icon-bag"></i><span class="count-box">0</span>
+                            <a href="?act=shopping-cart">
+                                <i class="icon icon-bag"></i><span class="count-box">.</span>
                             </a>
                         </li>
                     <?php else: ?>
