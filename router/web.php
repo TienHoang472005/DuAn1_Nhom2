@@ -80,6 +80,12 @@ if ($role == "user") {
             $dashBoardController->shoppingCart();
             break;
         }
+        
+        case 'check-out': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->checkout();
+            break;
+        }
 
         case 'shop': {
             $dashboardController = new DashboardController();
