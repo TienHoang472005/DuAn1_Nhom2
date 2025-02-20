@@ -29,6 +29,18 @@ if ($role == "user") {
             $loginController->logout();
             break;
         }
+
+        case 'register': {
+            $loginController = new LoginUserController();
+            $loginController->register();
+            break;
+        }
+
+        case 'post-register': {
+            $loginController = new LoginUserController();
+            $loginController->postRegister();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin

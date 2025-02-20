@@ -25,10 +25,31 @@ class LoginUserController{
     }
 
     public function logout(){
-      if(isset($_SESSION['users'])){
-          unset($_SESSION['users']);
-      }
-      header("Location: " . "?act");
-      exit;
+        if(isset($_SESSION['users'])){
+            unset($_SESSION['users']);
+        }
+        header("Location: " . "?act");
+        exit;
+    }
+
+    public function register(){
+        include 'app/Views/Users/register.php';
+    }
+
+    public function postRegister(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $loginModel = new LoginModel();
+            $message = $loginModel->addUserToDB();
+
+            if($message){
+                $_SESSION['message'] = 'Đăng kí thành công';
+                header("Location: " . "?act=login");
+                exit;
+            }else{
+                $_SESSION['message'] = 'Đăng kí không thành công';
+                header("Location: " . "?act=register");
+                exit;
+            }
+        }
     }
 }
