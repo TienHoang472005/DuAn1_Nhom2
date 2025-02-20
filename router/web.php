@@ -42,6 +42,19 @@ if ($role == "user") {
             break;
         }
 
+        case 'my-account': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->myAccount();
+            break;
+        }
+        case 'account-detail': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->accountDetail();
+            break;
+        }
+        case 'account-update': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->accountUpdate();
         // Giỏ hàng
         case 'shopping-cart': {
             $dashBoardController = new DashboardController();
