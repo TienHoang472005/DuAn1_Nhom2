@@ -9,7 +9,7 @@
                 </a>
             </div>
             <div class="col-xl-3 col-md-4 col-6">
-                <a href="" class="logo-header">
+                <a href="?act" class="logo-header">
                     <img src="assets/Users/images/logo/logo_bestbalo.png" alt="logo" class="logo">
                 </a>
             </div>
@@ -17,7 +17,7 @@
                 <nav class="box-navigation text-center">
                     <ul class="box-nav-ul d-flex align-items-center justify-content-center gap-30">
                         <li class="menu-item">
-                            <a href="" class="item-link">Trang chủ<i class="icon "></i></a>
+                            <a href="?act" class="item-link">Trang chủ<i class="icon "></i></a>
                         </li>
                         <li class="menu-item">
                             <a href="?act=shop" class="item-link">Sản phẩm <i class="icon"></i></a>

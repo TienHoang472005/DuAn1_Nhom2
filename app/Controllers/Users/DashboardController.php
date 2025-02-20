@@ -80,8 +80,6 @@ class DashboardController
             $userModel->changePassword($_POST['current-password'],$_POST['new-password']);
         }
     }
-
-}
     // Giỏ hàng
     public function shoppingCart()
     {
