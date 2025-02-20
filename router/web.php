@@ -41,6 +41,22 @@ if ($role == "user") {
             $loginController->postRegister();
             break;
         }
+
+        case 'my-account': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->myAccount();
+            break;
+        }
+        case 'account-detail': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->accountDetail();
+            break;
+        }
+        case 'account-update': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->accountUpdate();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin
