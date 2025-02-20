@@ -55,6 +55,10 @@ if ($role == "user") {
         case 'account-update': {
             $dashBoardController = new DashboardController();
             $dashBoardController->accountUpdate();
+        // Giỏ hàng
+        case 'shopping-cart': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->shoppingCart();
             break;
         }
     }
