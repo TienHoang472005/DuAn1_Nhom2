@@ -64,6 +64,12 @@ if ($role == "user") {
             break;
         }
         
+        case 'show-to-cart': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->showToCart();
+            break;
+        }
+
         case 'shopping-cart': {
             $dashBoardController = new DashboardController();
             $dashBoardController->shoppingCart();
