@@ -63,6 +63,17 @@ if ($role == "user") {
             $dashBoardController->shoppingCart();
             break;
         }
+
+        case 'shop': {
+            $dashboardController = new DashboardController();
+            $dashboardController->showShop();
+            break;
+        }
+        case 'product-detail': {
+            $dashboardController = new DashboardController();
+            $dashboardController->productDetail();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin
