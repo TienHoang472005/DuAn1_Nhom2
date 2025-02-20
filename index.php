@@ -13,8 +13,10 @@ include 'app/Database/Database.php';
     include 'app/Models/Admin/OrderModel.php';
 
     // User
+    include 'app/Models/Users/LoginModel.php';
     include 'app/Models/Users/ProductUserModel.php';
     include 'app/Models/Users/CategoryUserModel.php';
+
 
 // Controller
     // Admin
@@ -30,7 +32,6 @@ include 'app/Database/Database.php';
     include 'app/Controllers/Users/LoginUserController.php';
     include 'app/Controllers/Users/DashboardController.php';
 
-    // const BASE_URL = "http://localhost/DuAn1_Nhom2/";
 // Router 
 include 'router/web.php';
 

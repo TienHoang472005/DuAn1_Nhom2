@@ -11,6 +11,36 @@ if ($role == "user") {
             $dashBoardController->dashboard();
             break;
         }
+
+        case 'login': {
+            $loginController = new LoginUserController();
+            $loginController->login();
+            break;
+        }
+
+        case 'post-login': {
+            $loginController = new LoginUserController();
+            $loginController->postLogin();
+            break;
+        }
+
+        case 'logout': {
+            $loginController = new LoginUserController();
+            $loginController->logout();
+            break;
+        }
+
+        case 'register': {
+            $loginController = new LoginUserController();
+            $loginController->register();
+            break;
+        }
+
+        case 'post-register': {
+            $loginController = new LoginUserController();
+            $loginController->postRegister();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin
