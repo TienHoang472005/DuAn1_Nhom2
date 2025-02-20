@@ -101,13 +101,23 @@ class DashboardController
         $data = $cartModel->updateCartModel();
         echo json_encode($data);
     }
-    
+
     public function shoppingCart()
     {
         $cartModel = new CartUserModel();
         $data = $cartModel->showCartModel();
 
         include 'app/Views/Users/shopping-cart.php';
+    }
+    // Thanh toán
+    public function checkout(){
+        $userModel = new UserModel2();
+        $currentUser = $userModel->getCurrentUser();
+
+        $cartModel = new CartUserModel();
+        $products = $cartModel->showCartModel();
+
+        include 'app/Views/Users/check-out.php';
     }
 
     public function showShop(){

@@ -169,7 +169,7 @@
                                         </div>
                                         <div class="tf-mini-cart-view-checkout">
                                             <a href="?act=shopping-cart" class="tf-btn btn-outline radius-3 link w-100 justify-content-center">Giỏ hàng</a>
-                                            <a href="#" class="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"><span>Thanh toán</span></a>
+                                            <a href="?act=check-out" class="tf-btn btn-fill animate-hover-btn radius-3 w-100 justify-content-center"><span>Thanh toán</span></a>
                                         </div>
                                     </div>
                                 </div>
