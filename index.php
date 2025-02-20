@@ -16,6 +16,7 @@ include 'app/Database/Database.php';
     include 'app/Models/Users/LoginModel.php';
     include 'app/Models/Users/ProductUserModel.php';
     include 'app/Models/Users/CategoryUserModel.php';
+    include 'app/Models/Users/CartUserModel.php';
 
 
 // Controller
