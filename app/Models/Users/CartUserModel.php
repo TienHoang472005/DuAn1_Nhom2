@@ -64,7 +64,7 @@ class CartUserModel
         $stmt->execute();
         return $stmt->fetchAll();
     }
-    
+
     public function showCartModel()
     {
         $userId = $_SESSION['users']['id'];
@@ -97,5 +97,38 @@ class CartUserModel
         $stmt->bindParam(':cart_id', $cartId);
         $stmt->execute();
         return $stmt->fetchAll();
+    }
+
+    public function updateCartModel(){
+        $cart_detail_Id = $_POST['cart_detail_id'];
+        $action = $_POST['action']; 
+
+        switch ($action){
+            // Tăng
+            case 'increase':{
+                $sql = "UPDATE `cart_detail` SET `quantity` = quantity + 1 WHERE id = :cart_detail_id";
+                $stmt = $this->db->pdo->prepare($sql);
+                $stmt->bindParam(':cart_detail_id', $cart_detail_Id);
+                $stmt->execute();
+                break;
+            }
+            // Giảm
+            case 'decrease':{
+                $sql = "UPDATE `cart_detail` SET `quantity`= quantity - 1 WHERE id = :cart_detail_id and quantity > 1";
+                $stmt = $this->db->pdo->prepare($sql);
+                $stmt->bindParam(':cart_detail_id', $cart_detail_Id);
+                $stmt->execute();
+                break;
+            }
+            // Xóa
+            case 'deleted':{
+                $sql = "DELETE FROM `cart_detail` WHERE id = :cart_detail_id";
+                $stmt = $this->db->pdo->prepare($sql);
+                $stmt->bindParam(':cart_detail_id', $cart_detail_Id);
+                $stmt->execute();
+                break;
+            }
+        }
+        return $this->showCartModel();
     }
 }
