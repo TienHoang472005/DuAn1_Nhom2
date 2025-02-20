@@ -193,7 +193,96 @@
     <script type="text/javascript" src="assets/Users/js/wow.min.js"></script>
     <script type="text/javascript" src="assets/Users/js/multiple-modal.js"></script>
     <script type="text/javascript" src="assets/Users/js/main.js"></script>
+    <script>
+        function handleUpdate(cart_detail_id, action) {
+            if (action == "deleted") {
+                let check = confirm("Bạn có muốn xóa không?")
+                if (!check) {
+                    return
+                }
+            }
 
+            let formData = new FormData();
+
+            formData.append('cart_detail_id', cart_detail_id)
+            formData.append('action', action)
+
+            fetch('?act=update-cart', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    updateCart(data)
+                    //window.location.reload()
+                })
+        }
+
+        function updateCart(data) {
+            $(".tf-table-page-cart tbody").empty()
+            let totalMoney = 0
+            data.forEach(item => {
+                let UI = `
+                    <tr class="tf-cart-item file-delete">
+                        <td class="tf-cart-item_product">
+                            <a href="?act=product-detail&product_id=${item.product_id}" class="img-box">
+                                <img src="${item.image_main}" alt="img-product">
+                            </a>
+                            <div class="cart-info">
+                                <a href="?act=product-detail&product_id=${item.product_id}" class="cart-title link">
+                                    ${item.name}
+                                </a>
+                                <span class="remove-cart" onclick="handleUpdate('${item.id}', 'deleted')">Xóa</span>
+                            </div>
+                        </td>
+                        <td class="tf-cart-item_price" cart-data-title="Price">
+                            <div class="cart-price">
+                                ${item.price_sale != null ? item.price_sale.toLocaleString(): item.price.toLocaleString()} vnd
+                            </div>
+                        </td>
+                        <td class="tf-cart-item_quantity" cart-data-title="Quantity">
+                            <div class="cart-quantity">
+                                <div class="wg-quantity">
+                                    <span class="btn-quantity" onclick="handleUpdate('${item.id}', 'decrease')">
+                                        <svg class="d-inline-block" width="9" height="1" viewBox="0 0 9 1" fill="currentColor"><path d="M9 1H5.14286H3.85714H0V1.50201e-05H3.85714L5.14286 0L9 1.50201e-05V1Z"></path></svg>
+                                    </span>
+                                    <input type="text" name="number" value="${item.quantity}" fdprocessedid="l2okth">
+                                    <span class="btn-quantity" onclick="handleUpdate('${item.id}', 'increase')">
+                                        <svg class="d-inline-block" width="9" height="9" viewBox="0 0 9 9" fill="currentColor"><path d="M9 5.14286H5.14286V9H3.85714V5.14286H0V3.85714H3.85714V0H5.14286V3.85714H9V5.14286Z"></path></svg>
+                                    </span>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="tf-cart-item_total" cart-data-title="Total">
+                            <div class="cart-total">
+                                ${item.price_sale != null ? (Number(item.price_sale ) * Number(item.quantity)).toLocaleString() : 
+                                (Number(item.price) * Number(item.quantity)).toLocaleString()} vnd
+                            </div>
+                        </td>
+                    </tr>
+                `
+
+                $(".tf-table-page-cart tbody").append(UI)
+
+                if (item.price_sale != null) {
+                    totalMoney = totalMoney + (Number(item.price_sale) * Number(item.quantity))
+                } else {
+                    totalMoney = totalMoney + (Number(item.price) * Number(item.quantity))
+                }
+            })
+
+            $(".total-value").text(totalMoney.toLocaleString() + " vnd")
+        }
+
+        $("#link-check-out").click(function(event) {
+            event.preventDefault();
+            if ($("#check-agree").is(":checked")) {
+                window.location.replace("?act=check-out")
+            } else {
+                alert("Vui lòng đồng ý điều khoản")
+            }
+        })
+    </script>
 </body>
 
 </html>
