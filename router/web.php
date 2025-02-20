@@ -41,6 +41,13 @@ if ($role == "user") {
             $loginController->postRegister();
             break;
         }
+
+        // Giỏ hàng
+        case 'shopping-cart': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->shoppingCart();
+            break;
+        }
     }
 } else {
     // Đăng nhập Admin
