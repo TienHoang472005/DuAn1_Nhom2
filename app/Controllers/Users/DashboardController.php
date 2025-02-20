@@ -81,6 +81,15 @@ class DashboardController
         }
     }
     // Giỏ hàng
+    public function addToCart(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            
+            $cartModel = new CartUserModel();
+            $data = $cartModel->addCartModel();
+            echo json_encode($data);
+        }
+    }
+    
     public function shoppingCart()
     {
         $cartModel = new CartUserModel();

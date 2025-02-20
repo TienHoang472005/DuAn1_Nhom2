@@ -656,10 +656,10 @@
                                             <input type="text" name="number" value="${item.quantity}">
                                             <span class="btn-quantity plus-btn" onclick="handleUpdate('${item.id}', 'increase')">+</span>
                                         </div>
-                                        <div class="tf-mini-cart-remove" onclick="handleUpdate('${item.id}', 'deleted')">Remove</div>
+                                        <div class="tf-mini-cart-remove" onclick="handleUpdate('${item.id}', 'deleted')">Xóa</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                         `
                 let price = item.price_sale != null ? Number(item.price_sale) : Number(item.price)
                 let quantity = Number(item.quantity)

@@ -58,6 +58,12 @@ if ($role == "user") {
             break;
         }
         // Giỏ hàng
+        case 'add-to-cart': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->addToCart();
+            break;
+        }
+        
         case 'shopping-cart': {
             $dashBoardController = new DashboardController();
             $dashBoardController->shoppingCart();
