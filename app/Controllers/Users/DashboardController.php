@@ -88,4 +88,27 @@ class DashboardController
 
         include 'app/Views/Users/shopping-cart.php';
     }
+
+    public function showShop(){
+        $productModel = new ProductUserModel();
+        $listProduct = $productModel->getDataShop();
+        
+    }
+
+    public function productDetail(){
+        $productModel = new ProductUserModel();
+        $product = $productModel->getProductById();
+        
+        // Kiểm tra nếu sản phẩm không tồn tại
+        if (!$product) {
+            die("Sản phẩm không tồn tại!");
+        }
+    
+        $productImage = $productModel->getProductImageById();
+        $otherProduct = $productModel->getOtherProduct($product->category_id, $product->id);
+        $comment = $productModel->getComment($product->id);
+        $ratingProduct = $productModel->getRating($product->id);
+        include 'app/Views/Users/product-detail.php';
+    }
+
 }
