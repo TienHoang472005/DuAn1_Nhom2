@@ -58,7 +58,7 @@
                     <div class="col-xl-9 col-lg-8 col-md-8">
                         <div dir="ltr" class="swiper tf-sw-collection" data-preview="3" data-tablet="2" data-mobile="2" data-space-lg="30" data-space-md="30" data-space="15" data-loop="false" data-auto-play="false">
                             <div class="swiper-wrapper">
-                                 <?php foreach($listCategory as $key => $value): ?>
+                                <?php foreach($listCategory as $key => $value): ?>
                                 <div class="swiper-slide" lazy="true">
                                     <div class="collection-item style-left hover-img">
                                         <div class="collection-inner">
@@ -104,21 +104,6 @@
                                 <img class="lazyload img-product" data-src="<?= $value->image_main ?>" src="<?= $value->image_main ?>" alt="image-product">
                                 <img class="lazyload img-hover" data-src="<?= $value->image_main ?>" src="<?= $value->image_main ?>" alt="image-product">
                             </a>
-                            <div class="list-product-btn">
-                                <a href="#quick_add" data-bs-toggle="modal" class="box-icon bg_white quick-add tf-btn-loading">
-                                    <span class="icon icon-bag"></span>
-                                    <span class="tooltip">Thêm vào giỏ hàng</span>
-                                </a>
-                                <a href="javascript:void(0);" class="box-icon bg_white wishlist btn-icon-action">
-                                    <span class="icon icon-heart"></span>
-                                    <span class="tooltip">Yêu Thích</span>
-                                    <span class="icon icon-delete"></span>
-                                </a>
-                                <a href="#quick_view" data-bs-toggle="modal" class="box-icon bg_white quickview tf-btn-loading">
-                                    <span class="icon icon-view"></span>
-                                    <span class="tooltip">Xem Sản phẩm</span>
-                                </a>
-                            </div>
                         </div>
                         <div class="card-product-info">
                             <a href="?act=product-detail&product_id=<?= $value->id ?>" class="title link"><?= $value->name ?></a>
@@ -151,10 +136,6 @@
             </div>
         </section>
         <!-- /Sản Phẩm Bán Chạy -->
-        
-        <!-- Thương Hiệu -->
-        <?php include 'app/Views/Users/layouts/brand.php' ?>
-        <!-- /Thương Hiệu -->
         <!-- Hộp Icon -->
         <?php include 'app/Views/Users/layouts/iconbox.php' ?>
         <!-- /Hộp Icon -->

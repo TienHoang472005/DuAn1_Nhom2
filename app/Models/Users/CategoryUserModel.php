@@ -12,6 +12,15 @@ class CategoryUserModel {
         $result = $query->fetchAll();
         return $result;
     }
-}
 
-?>
+    public function getCategoryById($id){
+        $sql = "SELECT * FROM categories WHERE id = :id";
+
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        return $result;
+
+    }
+}
