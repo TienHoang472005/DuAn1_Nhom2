@@ -16,7 +16,7 @@ class ProductUserModel {
     public function getDataShop(){
         $sql = "SELECT * FROM `products`";
         if(isset($_GET['category_id'])){
-            $sql = $sql . "where category_id = :category_id";
+            $sql = $sql . "where category_id = :category_id";           
             $stmt = $this->db->pdo->prepare($sql);
             $stmt->bindParam(':category_id', $_GET['category_id']);
         }else{

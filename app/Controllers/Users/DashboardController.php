@@ -124,6 +124,7 @@ class DashboardController
         $productModel = new ProductUserModel();
         $listProduct = $productModel->getDataShop();
         
+        include 'app/Views/Users/shop.php';
     }
 
     public function productDetail(){
