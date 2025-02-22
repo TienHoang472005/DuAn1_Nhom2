@@ -40,6 +40,24 @@ class ProductUserModel {
         return null;
     }
     
+    public function getProductStock(){
+        $sql1 = "SELECT COUNT(id) as instock FROM `products` where stock > 0";
+        $query1 = $this->db->pdo->query($sql1);
+        $inStock = $query1->fetch();
+
+        $sql2 = "SELECT COUNT(id) as outstock FROM `products` where stock = 0";
+        $query2 = $this->db->pdo->query($sql2);
+        $outStock = $query2->fetch();
+        return [$inStock, $outStock];
+    }
+
+    public function getDataShopName(){
+        $productName = $_GET['product-name'];
+        $sql = "SELECT * FROM `products` WHERE name like '%$productName%'";
+        $query = $this->db->pdo->query($sql);
+        $result = $query->fetchAll();
+        return $result;
+    }
 
     public function getProductImageById(){
         if(isset($_GET['product_id'])){
