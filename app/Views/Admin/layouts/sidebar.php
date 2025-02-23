@@ -117,7 +117,7 @@
 
                     <!-- Quản lý bình luận -->
                     <li class="menu-item">
-                        <a href="#">
+                        <a href="?role=admin&act=comment-product" class="">
                             <div class="icon"><i class="icon-pie-chart"></i></div>
                             <div class="text">Quản lý bình luận</div>
                         </a>

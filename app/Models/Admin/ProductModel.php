@@ -16,11 +16,18 @@ class ProductModel{
     }
 
     // lấy id
-    public function getProductByID($id) {
-        $sql = "SELECT * FROM products WHERE id = :id";
-        $stmt = $this->db->pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetch();
+    public function getProductByID()
+    {
+    $id = $_GET['id'];
+    $sql = "
+    select * from products where id = :id
+    ";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    if ($stmt->execute()) {
+    return $stmt->fetch();
+    }
+    return false;
     }
 
     // lấy id hình ảnh

@@ -302,7 +302,7 @@
                                         <div class="tab-reviews-heading">
                                             <div class="top">
                                                 <div class="text-center">
-                                                    <h1 class="number fw-6"><?= $ratingAvg ?></h1>
+                                                    <h1 class="number fw-6"></h1>
                                                     <div class="list-star">
                                                         <i class="icon icon-star"></i>
                                                         <i class="icon icon-star"></i>
@@ -310,7 +310,7 @@
                                                         <i class="icon icon-star"></i>
                                                         <i class="icon icon-star"></i>
                                                     </div>
-                                                    <p>(<?= count($ratingProduct) ?> Ratings)</p>
+                                                    <p>(<?= count($ratingProduct) ?> Xếp hạng)</p>
                                                 </div>
                                                 <?php
                                                 $count5 = 0;
@@ -378,9 +378,9 @@
                                                 </div>
                                             </div>
                                             <div>
-                                                <div class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-cancel-review">Cancel Review</div>
+                                                <div class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-cancel-review">Hủy đánh giá</div>
                                                 <?php if (isset($_SESSION['users'])): ?>
-                                                    <div class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-write-review">Write a review</div>
+                                                    <div class="tf-btn btn-outline-dark fw-6 btn-comment-review btn-write-review">Viết đánh giá</div>
                                             </div>
                                         <?php endif ?>
 
@@ -424,7 +424,7 @@
                                                                     <div class="day text_black-3">
                                                                         <?php
                                                                         if ($value->rating != null) {
-                                                                            echo $value->rating . "<i class='icon icon-star text-warning'></i>";
+                                                                            echo $value->rating . " <i class='icon icon-star text-warning'></i>";
                                                                         }
                                                                         ?>
                                                                         <?= date("d/m/Y", strtotime($value->created_at)) ?>
@@ -477,7 +477,7 @@
                                             <div class="form-content">
                                                 <fieldset class="box-field">
                                                     <label class="label">Đánh giá sản phẩm</label>
-                                                    <textarea rows="4" placeholder="Write your comment here" tabindex="2" aria-required="true" required="" name="comment"></textarea>
+                                                    <textarea rows="4" placeholder="Viết bình luận của bạn ở đây" tabindex="2" aria-required="true" required="" name="comment"></textarea>
                                                 </fieldset>
                                             </div>
                                             <div class="button-submit">

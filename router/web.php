@@ -97,6 +97,29 @@ if ($role == "user") {
             $dashboardController->productDetail();
             break;
         }
+        case 'show-order': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->showOrder();
+            break;
+        }
+        
+
+        case 'show-order-detail': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->showOrderDetail();
+            break;
+        }
+        
+        case 'cancel-order': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->cancelOrder();
+            break;
+        }
+        case 'write-review': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->writeReview();
+            break;
+        } 
     }
 } else {
     // Đăng nhập Admin
@@ -254,6 +277,24 @@ if ($role == "user") {
         case 'order-change-status': {
             $orderController = new OrderController();
             $orderController->changeStatus();
+            break;
+        }
+         //quản lý bình luận
+         case 'comment-product':
+            $commentModel = new CommentRatingController();
+            $commentModel->showComment();  
+            break;
+        case 'comment-product-detail':
+            $commentModel = new CommentRatingController();
+            $commentModel->showCommentDetail();  
+            break;
+        case 'comment-delete':
+            $commentModel = new CommentRatingController();
+            $commentModel->commentDelete();  
+            break;
+        default: {
+            $commentRatingController = new CommentRatingController();
+            $commentRatingController->showComment();
             break;
         }
     }

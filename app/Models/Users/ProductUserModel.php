@@ -86,10 +86,67 @@ class ProductUserModel {
         $stmt->bindParam(':product_id', $productId);
         $stmt->execute();
         $result = $stmt->fetchAll();
-        return $result;
+        return $result; 
     }
 
+    public function saveRating(){
+        $sql = "SELECT * FROM product_rating WHERE user_id = :user_id AND product_id = :product_id";  
+        $stmt = $this->db->pdo->prepare($sql);  
+        $stmt->bindParam(':user_id', $_SESSION['users']['id']);  
+        $stmt->bindParam(':product_id', $_POST['productId']);  
+        $stmt->execute();  
+
+        if ($stmt->fetch()) {  
+            $sql = "UPDATE `product_rating` SET `rating` = :rating WHERE user_id = :user_id AND product_id = :product_id";  
+            $stmt = $this->db->pdo->prepare($sql);  
+            $stmt->bindParam(':user_id', $_SESSION['users']['id']);  
+            $stmt->bindParam(':rating', $_POST['rate']);  
+            $stmt->bindParam(':product_id', $_POST['productId']);  
+        }  
+
+        return $stmt->execute();
+
+
+        $productId = $_POST['productId'];
+        $rate = $_POST['rate'];
+        $userid = $_SESSION['users']['id'];
+        $now = date('Y-m-d H:i:s');
+        $sql = "INSERT INTO `product_rating`(`product_id`, `user_id`, `rating`, `created_at`) 
+        VALUES (:product_id, :user_id, :rating, :created_at)";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $productId);
+        $stmt->bindParam(':user_id', $userid);
+        $stmt->bindParam(':rating', $rate);
+        $stmt->bindParam(':created_at', $now);
+
+        return $stmt->execute();
+    }
     
+
+    public function saveComment(){
+        $productId = $_POST['productId'];
+        $userid = $_SESSION['users']['id'];
+        $comment = $_POST['comment'];
+        $now = date('Y-m-d H:i:s');
+        $parent = null;
+        $sql = "INSERT INTO `product_comment`(`product_id`, `user_id`, `comment`, `created_at`, `parent`) VALUES (:product_id, :user_id, :comment, :created_at, :parent)";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $productId);
+        $stmt->bindParam(':user_id', $userid);
+        $stmt->bindParam(':comment', $comment);
+        $stmt->bindParam(':created_at', $now);
+        $stmt->bindParam(':parent', $parent);
+        return $stmt->execute();
+    }
+    
+    public function getCommentByUser($productId, $userId){
+        $sql = "SELECT * FROM product_rating WHERE user_id = :user_id AND product_id = :product_id";
+        $stmt = $this->db->pdo->prepare($sql);
+        $stmt->bindParam(':product_id', $productId);
+        $stmt->bindParam(':user_id', $userId);
+        $stmt->execute();
+        return $stmt->fetch();
+    }
 
     public function getRating($productId){
         $sql = "select * from product_rating where product_id = :product_id";
