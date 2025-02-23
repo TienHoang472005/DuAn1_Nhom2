@@ -181,8 +181,43 @@ class DashboardController
         $productImage = $productModel->getProductImageById();
         $otherProduct = $productModel->getOtherProduct($product->category_id, $product->id);
         $comment = $productModel->getComment($product->id);
+        foreach($comment as $key => $value){
+            $rating = $productModel->getCommentByUser($product->id, $value->user_id);
+            if($rating){
+                $comment[$key]->rating = $rating->rating;
+            }else{
+                $comment[$key]->rating = null;
+            }
+        }
+        
         $ratingProduct = $productModel->getRating($product->id);
+        
+
         include 'app/Views/Users/product-detail.php';
     }
 
+    public function writeReview(){
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $productModel = new ProductUserModel();
+            $productModel->saveRating();
+            $productModel->saveComment();
+        }
+        header("Location:?act=product-detail&product_id=" . $_POST['productId']);
+    }
+
+    public function showOrder(){
+        $orderModel = new OrderUserModel();
+        $orders = $orderModel->getAllOrder();
+        include 'app/Views/Users/show-order.php';
+    }
+    public function showOrderDetail(){
+        $orderModel = new OrderUserModel();
+        $order_detail = $orderModel->getOrderDetail();
+        include 'app/Views/Users/show-order-detail.php';
+    }
+    public function cancelOrder(){
+        $orderModel = new OrderUserModel();
+        $orderModel->cancelOrderModel();
+        header("Location:?act=show-order");
+    }
 }
