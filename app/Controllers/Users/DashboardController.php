@@ -24,7 +24,7 @@ class DashboardController
     }
     public function accountUpdate()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $this->changePassword();
 
 
@@ -35,7 +35,7 @@ class DashboardController
             $allowedTypes = ['image/jpeg', 'image/png', 'image/gif'];
             $destPath = $user->image;
 
-            if(!empty($_FILES['image']['name'])){
+            if (!empty($_FILES['image']['name'])) {
                 $fileTmpPath = $_FILES['image']['tmp_name'];
                 $fileType = mime_content_type($fileTmpPath);
                 $fileName = basename($_FILES['image']['name']);
@@ -43,25 +43,24 @@ class DashboardController
 
                 $newFileName = uniqid() . '.' . $fileExtension;
 
-                if(in_array($fileType, $allowedTypes)){
+                if (in_array($fileType, $allowedTypes)) {
                     $destPath = $uploadDir . $newFileName;
-                    if(!move_uploaded_file($fileTmpPath, $destPath)){
+                    if (!move_uploaded_file($fileTmpPath, $destPath)) {
                         $destPath = "";
                     }
                     // Xóa ảnh cũ
                     unlink($user->image);
                 }
-
             }
 
             $userModel = new UserModel2();
             $message = $userModel->updateCurrentUser($destPath);
 
-            if($message){
+            if ($message) {
                 $_SESSION['message'] = 'Chỉnh sửa thành công';
                 header("Location: " . "?&act=account-detail");
                 exit;
-            }else{
+            } else {
                 $_SESSION['message'] = 'Chỉnh sửa không thành công';
                 header("Location: " . "?&act=account-detail");
                 exit;
@@ -69,34 +68,38 @@ class DashboardController
         }
     }
 
-    public function changePassword(){
-        if(
+    public function changePassword()
+    {
+        if (
             $_POST['current-password'] != "" &&
             $_POST['new-password'] != "" &&
             $_POST['current-password'] != "" &&
             $_POST['new-password'] == $_POST['confirm-password']
-        ){
+        ) {
             $userModel = new UserModel2();
-            $userModel->changePassword($_POST['current-password'],$_POST['new-password']);
+            $userModel->changePassword($_POST['current-password'], $_POST['new-password']);
         }
     }
     // Giỏ hàng
-    public function addToCart(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-            
+    public function addToCart()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $cartModel = new CartUserModel();
             $data = $cartModel->addCartModel();
             echo json_encode($data);
         }
     }
 
-    public function showToCart(){
+    public function showToCart()
+    {
         $cartModel = new CartUserModel();
         $data = $cartModel->showCartModel();
         echo json_encode($data);
     }
 
-    public function updateToCart(){
+    public function updateToCart()
+    {
         $cartModel = new CartUserModel();
         $data = $cartModel->updateCartModel();
         echo json_encode($data);
@@ -110,7 +113,8 @@ class DashboardController
         include 'app/Views/Users/shopping-cart.php';
     }
     // Thanh toán
-    public function checkout(){
+    public function checkout()
+    {
         $userModel = new UserModel2();
         $currentUser = $userModel->getCurrentUser();
 
@@ -120,7 +124,27 @@ class DashboardController
         include 'app/Views/Users/check-out.php';
     }
 
-    public function showShop(){
+    public function submitCheckout()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $cartModel = new CartUserModel();
+            $products = $cartModel->showCartModel();
+
+            $orderModel = new OrderUserModel();
+            $addOrder = $orderModel->order($products);
+
+            if ($addOrder) {
+                $cartModel->deleteCartDetail();
+                session_start();
+                $_SESSION['success_message'] = "Mua hàng thành công!";
+                header("Location: index.php");
+                exit();
+            }
+        }
+    }
+
+    public function showShop()
+    {
         $productModel = new ProductUserModel();
         $listProduct = $productModel->getDataShop();
 
@@ -132,72 +156,74 @@ class DashboardController
         $listCategory = $categoryModel->getCategoryDB();
         $stock = $productModel->getProductStock();
 
-        if(isset($_GET['instock'])){
-            $listProduct = array_filter($listProduct, function($product){
+        if (isset($_GET['instock'])) {
+            $listProduct = array_filter($listProduct, function ($product) {
                 return $product->stock > 0;
             });
         }
 
-        if(isset($_GET['outstock'])){
-            $listProduct = array_filter($listProduct, function($product){
-                return $product->stock ==0;
+        if (isset($_GET['outstock'])) {
+            $listProduct = array_filter($listProduct, function ($product) {
+                return $product->stock == 0;
             });
         }
 
-        if(isset($_GET['min'])){
-            $listProduct = array_filter($listProduct, function($product){
-                if($product->price_sale != null){
+        if (isset($_GET['min'])) {
+            $listProduct = array_filter($listProduct, function ($product) {
+                if ($product->price_sale != null) {
                     return $product->price_sale >= $_GET['min'];
                 }
                 return $product->price > $_GET['min'];
             });
         }
 
-        if(isset($_GET['max'])){
-            $listProduct = array_filter($listProduct, function($product){
-                if($product->price_sale != null){
+        if (isset($_GET['max'])) {
+            $listProduct = array_filter($listProduct, function ($product) {
+                if ($product->price_sale != null) {
                     return $product->price_sale <= $_GET['max'];
                 }
                 return $product->price < $_GET['max'];
             });
         }
 
-        if(isset($_GET['product-name'])){
+        if (isset($_GET['product-name'])) {
             $listProduct = $productModel->getDataShopName();
         }
 
         include 'app/Views/Users/shop.php';
     }
 
-    public function productDetail(){
+    public function productDetail()
+    {
         $productModel = new ProductUserModel();
         $product = $productModel->getProductById();
-        
+
         // Kiểm tra nếu sản phẩm không tồn tại
         if (!$product) {
             die("Sản phẩm không tồn tại!");
         }
-    
+
         $productImage = $productModel->getProductImageById();
         $otherProduct = $productModel->getOtherProduct($product->category_id, $product->id);
         $comment = $productModel->getComment($product->id);
-        foreach($comment as $key => $value){
+        foreach ($comment as $key => $value) {
             $rating = $productModel->getCommentByUser($product->id, $value->user_id);
-            if($rating){
+            if ($rating) {
                 $comment[$key]->rating = $rating->rating;
-            }else{
+            } else {
                 $comment[$key]->rating = null;
             }
         }
-        
+
         $ratingProduct = $productModel->getRating($product->id);
-        
+
 
         include 'app/Views/Users/product-detail.php';
     }
 
-    public function writeReview(){
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    public function writeReview()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $productModel = new ProductUserModel();
             $productModel->saveRating();
             $productModel->saveComment();
@@ -205,17 +231,20 @@ class DashboardController
         header("Location:?act=product-detail&product_id=" . $_POST['productId']);
     }
 
-    public function showOrder(){
+    public function showOrder()
+    {
         $orderModel = new OrderUserModel();
         $orders = $orderModel->getAllOrder();
         include 'app/Views/Users/show-order.php';
     }
-    public function showOrderDetail(){
+    public function showOrderDetail()
+    {
         $orderModel = new OrderUserModel();
         $order_detail = $orderModel->getOrderDetail();
         include 'app/Views/Users/show-order-detail.php';
     }
-    public function cancelOrder(){
+    public function cancelOrder()
+    {
         $orderModel = new OrderUserModel();
         $orderModel->cancelOrderModel();
         header("Location:?act=show-order");
