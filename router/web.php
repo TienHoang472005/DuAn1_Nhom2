@@ -86,6 +86,12 @@ if ($role == "user") {
             $dashBoardController->checkout();
             break;
         }
+        
+        case 'submit-check-out': {
+            $dashBoardController = new DashboardController();
+            $dashBoardController->submitCheckout();
+            break;
+        }
 
         case 'shop': {
             $dashboardController = new DashboardController();

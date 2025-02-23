@@ -12,7 +12,7 @@
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
     <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Ecomus - Ultimate Admin Dashboard HTML</title>
+    <title>BestBalo - Website bán balo hàng đầu VN</title>
 
     <meta name="author" content="themesflat.com">
 
@@ -35,8 +35,8 @@
     <link rel="stylesheet" href="assets/Admin/icon/style.css">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/Admin/images/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/Admin/images/favicon.png">
+    <link rel="shortcut icon" href="assets\Admin\images\logo_bestbalo.png">
+    <link rel="apple-touch-icon-precomposed" href="assets\Admin\images\logo_bestbalo.png">
 
 </head>
 

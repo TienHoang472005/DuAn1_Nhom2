@@ -1,18 +1,13 @@
 <!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!-->
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <!--<![endif]-->
 <style>
-    
 </style>
 
-<!-- Mirrored from themesflat.co/html/ecomus/admin-ecomus/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 14:58:29 GMT -->
 <head>
     <!-- Basic Page Needs -->
     <meta charset="utf-8">
-    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
-    <title>Ecomus - Ultimate Admin Dashboard HTML</title>
+    <title>BestBalo - Website bán balo hàng đầu VN</title>
 
     <meta name="author" content="themesflat.com">
 
@@ -35,8 +30,8 @@
     <link rel="stylesheet" href="assets/Admin/icon/style.css">
 
     <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="assets/Admin/images/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/Admin/images/favicon.png">
+    <link rel="shortcut icon" href="assets\Admin\images\logo_bestbalo.png">
+    <link rel="apple-touch-icon-precomposed" href="assets\Admin\images\logo_bestbalo.png">
 
 </head>
 
@@ -68,14 +63,14 @@
                         <!-- main-content-wrap -->
                         <div class="main-content-inner">
                             <!-- main-content-wrap -->
-                            <div class="main-content-wrap"> 
-                            <div class="wg-box">
-                                <?php 
-                                    if(isset($_SESSION['message'])){
-                                            echo "<p>" . $_SESSION['message'] . "</p>";
-                                            unset($_SESSION['message']);
-                                        }
-                                ?>
+                            <div class="main-content-wrap">
+                                <div class="wg-box">
+                                    <?php
+                                    if (isset($_SESSION['message'])) {
+                                        echo "<p>" . $_SESSION['message'] . "</p>";
+                                        unset($_SESSION['message']);
+                                    }
+                                    ?>
                                     <div class="title-box">
                                         Bình luận
                                     </div>
@@ -107,52 +102,52 @@
                                         <ul class="table-title flex gap20 mb-14">
                                             <li>
                                                 <div class="body-title">STT</div>
-                                            </li>    
+                                            </li>
                                             <li>
                                                 <div class="body-title">Tên sản phẩm</div>
                                             </li>
                                             <li>
                                                 <div class="body-title">Ảnh sản phẩm</div>
-                                            </li>      
+                                            </li>
                                             <li>
                                                 <div class="body-title">Giá</div>
-                                            </li>                                          
+                                            </li>
                                             <li>
-                                                <div class="body-title">Giá khuyến mãi</div> 
+                                                <div class="body-title">Giá khuyến mãi</div>
                                             </li>
                                             <li>
                                                 <div class="body-title">Đánh giá</div>
-                                            </li>  
+                                            </li>
                                             <li>
                                                 <div class="body-title">Số bình luận</div>
-                                            </li>  
+                                            </li>
                                             <li>
                                                 <div class="body-title">Hành động</div>
                                             </li>
                                         </ul>
                                         <ul class="flex flex-column">
-                                            <?php foreach($listProduct as $key => $value): ?>
+                                            <?php foreach ($listProduct as $key => $value): ?>
                                                 <li class="wg-product item-row ">
-                                                    <div style="font-size:20px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $key+ 1?></div>
-                                                    <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $value->name?></div>
+                                                    <div style="font-size:20px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $key + 1 ?></div>
+                                                    <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $value->name ?></div>
                                                     <div style="font-size:15px;font-weight: 500;" class="body-text text-main-dark mt-4">
-                                                        <img src="<?= $value->image_main?>" alt="" width="100">
-                                                    </div>  
+                                                        <img src="<?= $value->image_main ?>" alt="" width="100">
+                                                    </div>
                                                     <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= number_format($value->price) ?> VND </div>
                                                     <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= number_format($value->price_sale) ?> VND </div>
                                                     <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4">
-                                                        <?= $value->avgRating ?> 
-                                                     </div>
+                                                        <?= $value->avgRating ?>
+                                                    </div>
                                                     <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4">
-                                                        <?= $value->countComment ?> 
-                                                     </div>
-                                                    
-                                                     <div class="list-icon-function">
-                                                     <div class="item eye">
-                                                     <a href="?role=admin&act=comment-product-detail&id=<?= $value->id ?>">
+                                                        <?= $value->countComment ?>
+                                                    </div>
+
+                                                    <div class="list-icon-function">
+                                                        <div class="item eye">
+                                                            <a href="?role=admin&act=comment-product-detail&id=<?= $value->id ?>">
                                                                 <i class="icon-eye"></i>
                                                             </a>
-                                                    </div>
+                                                        </div>
                                                     </div>
                                                 </li>
                                             <?php endforeach; ?>
@@ -181,21 +176,21 @@
                                     </div> -->
                                 </div>
                             </div>
-                            </div>
-                            <!-- /main-content-wrap -->
                         </div>
                         <!-- /main-content-wrap -->
-                        <!-- bottom-page -->
-                        <?php include 'app/Views/Admin/layouts/footer.php' ?>
-                        <!-- /bottom-page -->
                     </div>
-                    <!-- /main-content -->
+                    <!-- /main-content-wrap -->
+                    <!-- bottom-page -->
+                    <?php include 'app/Views/Admin/layouts/footer.php' ?>
+                    <!-- /bottom-page -->
                 </div>
-                <!-- /section-content-right -->
+                <!-- /main-content -->
             </div>
-            <!-- /layout-wrap -->
+            <!-- /section-content-right -->
         </div>
-        <!-- /#page -->
+        <!-- /layout-wrap -->
+    </div>
+    <!-- /#page -->
     </div>
     <!-- /#wrapper -->
 
@@ -227,4 +222,5 @@
 
 
 <!-- Mirrored from themesflat.co/html/ecomus/admin-ecomus/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 06 Nov 2024 14:58:54 GMT -->
+
 </html>
