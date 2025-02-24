@@ -51,7 +51,7 @@
                                             <li>Thao tác</li>
                                         </ul>
                                         <ul class="flex flex-column">
-                                            <?php foreach ($orders as $index => $order): ?>
+                                            <?php foreach ($orders as $index => $order): ?> 
                                                 <li class="wg-product item-row">
                                                     <div class="body-text"><?= $index + 1 ?></div>
                                                     <div class="body-text"><?= $order->name ?></div>
@@ -62,7 +62,7 @@
                                                         <form action="?role=admin&act=order-change-status" method="post">
                                                             <input type="hidden" name="order_id" value="<?= $order->id ?>">
                                                             <select name="status" class="status-select">
-                                                                <option value="pending" <?= $order->status == "pending" ? "selected" : "" ?>>Chờ xử lý</option>
+                                                                <option  value="pending" <?= $order->status == "pending" ? "selected" : "" ?>>Chờ xử lý</option>
                                                                 <option value="confirmed" <?= $order->status == "confirmed" ? "selected" : "" ?>>Đã xác nhận</option>
                                                                 <option value="packed" <?= $order->status == "packed" ? "selected" : "" ?>>Đã đóng gói</option>
                                                                 <option value="shipped" <?= $order->status == "shipped" ? "selected" : "" ?>>Đã giao cho đơn vị vận chuyển</option>
@@ -70,6 +70,7 @@
                                                                 <option value="delivered" <?= $order->status == "delivered" ? "selected" : "" ?>>Giao hàng thành công</option>
                                                                 <option value="completed" <?= $order->status == "completed" ? "selected" : "" ?>>Đã hoàn thành</option>
                                                                 <option value="canceled" <?= $order->status == "canceled" ? "selected" : "" ?>>Đã hủy</option>
+                                                                
                                                             </select>
                                                         </form>
                                                     </div>

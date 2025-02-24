@@ -16,6 +16,35 @@
     <link rel="shortcut icon" href="assets/Admin/images/logo_bestbalo.png">
     <link rel="apple-touch-icon-precomposed" href="assets/Admin/images/logo_bestbalo.png">
 </head>
+<style>
+        .container {
+            width: 100%;
+        }
+
+        .table-title, .wg-product {
+            display: grid;
+            grid-template-columns: 5% 30% 15% 10% 15% 15%;
+            align-items: center;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .table-title {
+            font-weight: bold;
+            border-bottom: 2px solid #ccc;
+        }
+
+        .wg-product {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .wg-product img {
+            width: 50px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 
 <body>
     <div id="wrapper">
@@ -32,35 +61,34 @@
                     <div class="main-content">
                         <div class="main-content-inner">
                             <div class="main-content-wrap"> 
-                                <div class="wg-box">
+                            <div class="wg-box">
                                     <div class="title-box">Danh sách đơn hàng</div>     
                                     <div class="container">
-                                        <table class="tf-table-page-cart">
-                                            <thead>
-                                                <tr>
-                                                    <th>STT</th>
-                                                    <th>Tên sản phẩm</th>
-                                                    <th>Hình ảnh</th>
-                                                    <th>Số lượng</th>
-                                                    <th>Giá</th>
-                                                    <th>Tổng cộng</th>
-                                                </tr>
-                                            </thead>
+                                        <ul class="table-title flex gap20 mb-14">
+                                            <li>STT</li>
+                                            <li>Tên sản phẩm</li>
+                                            <li>Hình ảnh</li>
+                                            <li>Số lượng</li>
+                                            <li>Giá</li>
+                                            <li>Tổng cộng</li>
+                                        </ul>
+                                        <ul class="flex flex-column">
                                             <?php foreach($order_detail as $key => $value): ?>
-                                                <tr>
-                                                    <td class="text-center"><?= $key + 1 ?></td>
-                                                    <td class="text-center"><?= $value->name ?></td>
-                                                    <td class="text-center">
+                                                <li class="wg-product item-row flex gap20">
+                                                    <div class="body-text"><?= $key + 1 ?></div>
+                                                    <div class="body-text"><?= $value->name ?></div>
+                                                    <div class="body-text">
                                                         <img src="<?= $value->image_main ?>" alt="" width="50">
-                                                    </td>
-                                                    <td class="text-center"><?= $value->quantity ?></td>
-                                                    <td class="text-center"><?= number_format($value->price) ?> VND</td>
-                                                    <td class="text-end"><?= number_format($value->total) ?> VND</td>
-                                                </tr>
+                                                    </div>
+                                                    <div class="body-text"><?= $value->quantity ?></div>
+                                                    <div class="body-text"><?= number_format($value->price) ?> VND</div>
+                                                    <div class="body-text"><?= number_format($value->total) ?> VND</div>
+                                                </li>
                                             <?php endforeach; ?>
-                                        </table>
+                                        </ul>
                                     </div>                               
                                 </div>
+
                             </div>
                         </div>
                         <?php include 'app/Views/Admin/layouts/footer.php' ?>
