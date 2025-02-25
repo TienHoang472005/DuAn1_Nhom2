@@ -22,6 +22,15 @@ class CommentRatingController extends ControllerAdmin{
 
         include 'app/Views/Admin/comment-detail.php';
     }
+
+    public function commentReply(){
+        
+        $commentRatingModel = new CommentRatingModel();
+        $commentRatingModel->replyCommentModel();
+
+        header("Location: ?role=admin&act=comment-detail&id=" . $_POST['product-id']);
+    }
+
     public function commentDelete()
     {
         $commentRatingModel = new CommentRatingModel();

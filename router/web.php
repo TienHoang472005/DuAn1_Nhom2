@@ -294,6 +294,10 @@ if ($role == "user") {
             $commentModel = new CommentRatingController();
             $commentModel->showCommentDetail();  
             break;
+        case 'comment-reply':
+            $commentModel = new CommentRatingController();
+            $commentModel->commentReply();  
+            break;    
         case 'comment-delete':
             $commentModel = new CommentRatingController();
             $commentModel->commentDelete();  

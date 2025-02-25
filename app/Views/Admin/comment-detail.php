@@ -134,6 +134,10 @@
                                                     </div>
                                                     
                                                     <div class="list-icon-function">
+                                                        <div class="item eye">
+                                                            <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal" data-commnet="<?= $value->id ?>">Trả lời</button>
+                                                        </div>
                                                         <form action="?role=admin&act=comment-delete" method="post">
                                                             <input type="hidden" name="productId" value="<?= $product->id ?>">
                                                             <input type="hidden" name="commentId" value="<?= $value->id ?>">
@@ -171,6 +175,30 @@
                             </div>
                             <!-- /main-content-wrap -->
                         </div>
+
+                        <!-- Modal -->  
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">  
+                            <div class="modal-dialog">  
+                                <div class="modal-content">  
+                                    <div class="modal-header">  
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>  
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>  
+                                    </div>  
+                                    <form action="?role=admin&act=comment-reply" method="post">  
+                                        <input type="hidden" name="product-id" value="<?= $product->id ?>">  
+                                        <input type="hidden" name="comment-id" id="comment-id">  
+                                        <div class="modal-body">  
+                                            <textarea name="reply" class="from-control" placeholder="Nội dung trả lời"></textarea>
+                                        </div>  
+                                        <div class="modal-footer">  
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>  
+                                            <button type="submit" class="btn btn-primary">Trả lời</button>  
+                                        </div>  
+                                    </form>  
+                                </div>  
+                            </div>  
+                        </div>
+
                         <!-- /main-content-wrap -->
                         <!-- bottom-page -->
                         <?php include 'app/Views/Admin/layouts/footer.php' ?>
@@ -209,6 +237,25 @@
     <script src="assets/Admin/js/switcher.js"></script>
     <script defer src="assets/Admin/js/theme-settings.js"></script>
     <script src="assets/Admin/js/main.js"></script>
+
+    <script>  
+    let commentId = document.querySelector('#comment-id');  
+
+    var exampleModal = document.getElementById('exampleModal');  
+    exampleModal.addEventListener('show.bs.modal', function(event) {  
+        var button = event.relatedTarget;  
+        var id = button.getAttribute('data-commnet')
+        commentId.value = id 
+
+        // Cập nhật nội dung cho modal.  
+        // var modalTitle = exampleModel.querySelector('.modal-title');  
+        // var modalBodyInput = exampleModel.querySelector('.modal-body input');  
+
+        // modalTitle.textContent = 'Tin nhắn mới đến ' + recipient  
+        // modalBodyInput.value = recipient;  
+    })
+
+    </script>
 
 </body>
 
