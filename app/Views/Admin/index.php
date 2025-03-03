@@ -73,7 +73,7 @@
                                         <div>
                                             <h4 class="dashboard-title">Doanh Thu</h4>
                                             <p class="dashboard-value">
-                                                <?= number_format($revenue, 0, ',', '.') . ' VND' ?>
+                                                <?= number_format($revenue ?? 0, 0, ',', '.') . ' VND' ?>
                                             </p>
                                         </div>
                                     </div>
@@ -88,7 +88,7 @@
                                         <div>
                                             <h4 class="dashboard-title">Số Đơn Hàng</h4>
                                             <p class="dashboard-value">
-                                                <?= number_format($totalOrders, 0, ',', '.') . ' Đơn' ?>
+                                                <?= number_format($totalOrders ?? 0, 0, ',', '.') . ' Đơn' ?>
                                             </p>
                                         </div>
                                     </div>
