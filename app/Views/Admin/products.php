@@ -138,8 +138,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="item trash">
-                                                            <a href="?role=admin&act=delete-product&id=<?= $product->id ?>"
-                                                            onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                                                            <a class="delete-product" href="?role=admin&act=delete-product&id=<?= $product->id ?>">
                                                                 <i class="icon-trash-2"></i>
                                                             </a>
                                                         </div>
@@ -174,6 +173,21 @@
     <script src="assets/Admin/js/jquery.min.js"></script>
     <script src="assets/Admin/js/bootstrap.min.js"></script>
     <script src="assets/Admin/js/main.js"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".delete-product").forEach(function (element) {
+        element.addEventListener("click", function (event) {
+            event.preventDefault(); 
+            let confirmDelete = confirm("Bạn có chắc chắn muốn xóa danh mục này không?");
+            if (confirmDelete) {
+                window.location.href = this.getAttribute("href");
+            } else {
+                location.reload();
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>
