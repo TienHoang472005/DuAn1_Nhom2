@@ -74,29 +74,47 @@ class CategoryController extends ControllerAdmin
     }
     
     public function deleteCategory()
-    {
-        if (!isset($_GET['id'])) {
-            $_SESSION['message'] = 'Chọn danh mục cần xóa';
-            header("Location: ?role=admin&act=all-category");
-            exit;
-        }
-
-        $categoryModel = new CategoryModel();
-        $category = $categoryModel->getCategoryByID($_GET['id']);
-
-        if ($category) {
-            if (!empty($category->image)) {
-                unlink($category->image); // Xóa ảnh nếu tồn tại
-            }
-            $message = $categoryModel->deleteCategory($_GET['id']);
-            $_SESSION['message'] = $message ? 'Xóa thành công' : 'Xóa không thành công';
-        } else {
-            $_SESSION['message'] = 'Danh mục không tồn tại';
-        }
-
+{
+    if (!isset($_GET['id'])) {
+        $_SESSION['message'] = 'Chọn danh mục cần xóa';
         header("Location: ?role=admin&act=all-category");
         exit;
     }
+
+    $categoryModel = new CategoryModel();
+    $category = $categoryModel->getCategoryByID($_GET['id']);
+
+    if (!$category) {
+        $_SESSION['message'] = 'Danh mục không tồn tại';
+        header("Location: ?role=admin&act=all-category");
+        exit;
+    }
+
+    // Kiểm tra xem danh mục có sản phẩm hay không
+    $productCount = $categoryModel->countProductsByCategory($_GET['id']);
+
+    if ($productCount > 0) {
+        $_SESSION['message'] = 'Không thể xóa danh mục Vì đang có sản phẩm thuộc danh mục này!';
+        header("Location: ?role=admin&act=all-category");
+        exit;
+    }
+
+    // Xóa ảnh nếu tồn tại
+    if (!empty($category->image)) {
+        $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($category->image, '/');
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    // Xóa danh mục
+    $message = $categoryModel->deleteCategory($_GET['id']);
+    $_SESSION['message'] = $message ? 'Xóa thành công' : 'Xóa không thành công';
+
+    header("Location: ?role=admin&act=all-category");
+    exit;
+}
+
 
     public function updateCategory()
     {

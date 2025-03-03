@@ -28,23 +28,47 @@ class CategoryModel
         return $stmt->execute();
     }
 
+    public function countProductsByCategory($categoryId)
+{
+    $sql = "SELECT COUNT(*) FROM products WHERE category_id = :category_id";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+    $stmt->execute();
+    return $stmt->fetchColumn();
+}
+
     public function deleteCategory($id)
-    {
-        $category = $this->getCategoryByID($id);
+{
+    // Kiểm tra xem danh mục có sản phẩm hay không
+    $sql = "SELECT COUNT(*) FROM products WHERE category_id = :id";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
+    $productCount = $stmt->fetchColumn();
 
-        // Xóa ảnh nếu tồn tại
-        if ($category && !empty($category->image)) {
-            if (file_exists($category->image)) {
-                unlink($category->image);
-            }
-        }
-
-        $sql = "DELETE FROM categories WHERE id = :id";
-        $stmt = $this->db->pdo->prepare($sql);
-        $stmt->bindParam(':id', $id);
-
-        return $stmt->execute();
+    if ($productCount > 0) {
+        // Nếu còn sản phẩm, không cho phép xóa
+        return false;
     }
+
+    // Lấy thông tin danh mục để xóa ảnh (nếu có)
+    $category = $this->getCategoryByID($id);
+
+    if ($category && !empty($category->image)) {
+        $imagePath = $_SERVER['DOCUMENT_ROOT'] . '/' . ltrim($category->image, '/');
+        if (file_exists($imagePath)) {
+            unlink($imagePath);
+        }
+    }
+
+    // Tiến hành xóa danh mục
+    $sql = "DELETE FROM categories WHERE id = :id";
+    $stmt = $this->db->pdo->prepare($sql);
+    $stmt->bindParam(':id', $id);
+
+    return $stmt->execute();
+}
+
 
     // Lấy danh mục theo ID
     public function getCategoryByID($id)

@@ -19,7 +19,7 @@
 
     <style>
         .thongbao {
-            color: rgb(22, 88, 10);
+            color: rgb(65, 9, 9);
             font-style: italic;
             font-family: 'Arial', sans-serif;
             font-size: 14px;
@@ -141,8 +141,7 @@
                                                             </a>
                                                         </div>
                                                         <div class="item trash">
-                                                            <a href="?role=admin&act=delete-category&id=<?= $value->id ?>"
-                                                                onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?');">
+                                                            <a class="delete-category" href="?role=admin&act=delete-category&id=<?= $value->id ?>">
                                                                 <i class="icon-trash-2"></i>
                                                             </a>
                                                         </div>
@@ -215,6 +214,21 @@
     <script defer src="assets/Admin/js/theme-settings.js"></script>
     <script src="assets/Admin/js/main.js"></script>
 
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".delete-category").forEach(function (element) {
+        element.addEventListener("click", function (event) {
+            event.preventDefault(); 
+            let confirmDelete = confirm("Bạn có chắc chắn muốn xóa danh mục này không?");
+            if (confirmDelete) {
+                window.location.href = this.getAttribute("href");
+            } else {
+                location.reload();
+            }
+        });
+    });
+});
+</script>
 </body>
 
 </html>
