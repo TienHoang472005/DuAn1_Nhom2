@@ -127,6 +127,34 @@ class DashboardController
     public function submitCheckout()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+            $name = trim($_POST['name']);
+            $address = trim($_POST['address']);
+            $phone = trim($_POST['phone']);
+            $email = trim($_POST['email']);
+
+            $errors = [];
+
+            // Kiểm tra hợp lệ
+            if (empty($name)) {
+                $errors[] = "Vui lòng nhập họ tên!";
+            }
+            if (empty($address)) {
+                $errors[] = "Vui lòng nhập địa chỉ!";
+            }
+            if (!preg_match('/^[0-9]{9,15}$/', $phone)) {
+                $errors[] = "Số điện thoại không hợp lệ! Vui lòng nhập số hợp lệ (9-15 chữ số).";
+            }
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $errors[] = "Email không hợp lệ! Vui lòng nhập đúng định dạng.";
+            }
+            
+            if (!empty($errors)) {
+                $_SESSION['errors'] = $errors;
+                header("Location: ?act=check-out");
+                exit();
+            }
+
             $cartModel = new CartUserModel();
             $products = $cartModel->showCartModel();
 
