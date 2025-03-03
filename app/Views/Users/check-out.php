@@ -54,7 +54,17 @@
             }
         }
         ?>
-
+        <?php if (isset($_SESSION['errors']) && !empty($_SESSION['errors'])): ?>
+            <div class="alert alert-danger">
+                <ul>
+                    <?php foreach ($_SESSION['errors'] as $error): ?>
+                        <li><?= htmlspecialchars($error) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+            <?php unset($_SESSION['errors']); // Xóa lỗi sau khi hiển thị 
+            ?>
+        <?php endif; ?>
         <section class="flat-spacing-11">
             <div class="container">
                 <div class="tf-page-cart-wrap layout-2">

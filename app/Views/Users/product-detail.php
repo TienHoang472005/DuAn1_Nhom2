@@ -576,8 +576,10 @@
     <script type="text/javascript" src="assets/Users/js/main.js"></script>
 
     <script>
+        // Nếu có giá khuyến mãi khi dùng nó để tính, nếu không thì dùng price thường
         let price = "<?= $product->price_sale != null ? $product->price_sale : $product->price ?>"
         price = Number(price)
+        // Khi ấn nút dấu - 
         document.querySelector(".btn-decrease-custom").addEventListener("click", function() {
             let quantity = document.querySelector(".quantity-product")
             if (Number(quantity.value) > 0) {
@@ -586,7 +588,7 @@
                 document.querySelector(".total-price").textContent = total.toLocaleString() + " VND"
             }
         })
-
+        // Khi ấn nút dấu +
         document.querySelector(".btn-increase-custom").addEventListener("click", function() {
             let quantity = document.querySelector(".quantity-product")
             quantity.value = Number(quantity.value) + 1
@@ -594,12 +596,13 @@
             document.querySelector(".total-price").textContent = total.toLocaleString() + " VND"
         })
 
-
+        // khi ấn nút thêm vào giỏ
         const btnAddToCart = document.querySelector(".btnAddToCart")
         btnAddToCart.addEventListener("click", function() {
+            // lấy id. số lượng từ input
             let productId = "<?= $_GET['product_id'] ?>"
             let quantity = document.querySelector(".quantity-product").value
-
+            // Tạo đối tượng FormData() để gửi dữ liệu qua POST
             let formData = new FormData();
             formData.append('productId', productId)
             formData.append('quantity', quantity)
