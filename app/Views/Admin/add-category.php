@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <style>
-    .error-message {
-  color: red; /* Màu đỏ cho lỗi */
-  font-style: italic; /* Chữ nghiêng */
-  font-family: 'Arial', sans-serif; /* Font chữ đẹp, đơn giản */
-  font-size: 14px; /* Kích thước chữ vừa phải */
-  font-weight: 500; /* Độ đậm nhẹ nhàng */
-  margin: 10px 0; /* Tạo khoảng cách trên dưới */
-  padding: 5px; /* Khoảng cách bên trong giúp dễ nhìn */
-  border-left: 3px solid red; /* Đường viền trái nhấn mạnh */
-  background-color: #ffe6e6; /* Nền nhạt để dễ đọc */
-  letter-spacing: 2px;
-  font-size:15px;
-}
+    
 
 </style>
 <head>
@@ -74,7 +62,7 @@
                             <div class="wg-box">
                                     <?php 
                                         if(isset($_SESSION['message'])){
-                                            echo "<p>" . $_SESSION['message'] . "</p>";
+                                            echo "<p class='error-message'>" . $_SESSION['message'] . "</p>";
                                             unset($_SESSION['message']);
                                         }
                                         if(isset($_SESSION['error'])){

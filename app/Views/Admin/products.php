@@ -14,6 +14,21 @@
     <link rel="stylesheet" type="text/css" href="assets/Admin/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="assets/Admin/css/styles.css">
 
+    <style>
+        .thongbao {
+            color: rgb(22, 88, 10);
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 0;
+            padding: 5px;
+            border-left: 3px solid rgb(43, 138, 5);
+            background-color:rgb(208, 254, 177);
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+    </style>
 
 
     <!-- Font -->
@@ -49,7 +64,7 @@
                                 <div class="wg-box">
                                     <?php 
                                     if (isset($_SESSION['message'])) {
-                                        echo "<p>" . $_SESSION['message'] . "</p>";
+                                        echo "<p class='thongbao'>" . $_SESSION['message'] . "</p>";
                                         unset($_SESSION['message']);
                                     }
                                     ?>
@@ -123,7 +138,8 @@
                                                             </a>
                                                         </div>
                                                         <div class="item trash">
-                                                            <a href="?role=admin&act=delete-product&id=<?= $product->id ?>">
+                                                            <a href="?role=admin&act=delete-product&id=<?= $product->id ?>"
+                                                            onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
                                                                 <i class="icon-trash-2"></i>
                                                             </a>
                                                         </div>

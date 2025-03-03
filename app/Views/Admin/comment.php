@@ -28,6 +28,21 @@
 
     <!-- Icon -->
     <link rel="stylesheet" href="assets/Admin/icon/style.css">
+    <style>
+        .thongbao {
+            color: rgb(22, 88, 10);
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 0;
+            padding: 5px;
+            border-left: 3px solid rgb(43, 138, 5);
+            background-color:rgb(208, 254, 177);
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+    </style>
 
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="assets\Admin\images\logo_bestbalo.png">
@@ -67,7 +82,7 @@
                                 <div class="wg-box">
                                     <?php
                                     if (isset($_SESSION['message'])) {
-                                        echo "<p>" . $_SESSION['message'] . "</p>";
+                                        echo "<p class='thongbao'>" . $_SESSION['message'] . "</p>";
                                         unset($_SESSION['message']);
                                     }
                                     ?>
