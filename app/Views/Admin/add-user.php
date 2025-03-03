@@ -60,11 +60,11 @@
                             <div class="wg-box">
                                     <?php 
                                         if(isset($_SESSION['message'])){
-                                            echo "<p>" . $_SESSION['message'] . "</p>";
+                                            echo "<p class='error-message'>" . $_SESSION['message'] . "</p>";
                                             unset($_SESSION['message']);
                                         }
                                         if(isset($_SESSION['error'])){
-                                            echo "<p>" . $_SESSION['error'] . "</p>";
+                                            echo "<p class='error-message'>" . $_SESSION['error'] . "</p>";
                                             unset($_SESSION['error']);
                                         }
                                     ?>

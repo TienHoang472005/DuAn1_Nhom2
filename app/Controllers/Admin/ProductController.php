@@ -69,7 +69,7 @@ class ProductController extends ControllerAdmin
         if($name != "" && $category != "" && $price != "" && $stock != ""){
             return true;
         }else{
-            $_SESSION['error'] = "Bạn nhập thiếu thông tin";
+            $_SESSION['error'] = "Bạn nhập thiếu thông tin !!!";
             return false;
         }
     }

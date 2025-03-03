@@ -5,7 +5,7 @@ class ProductModel{
     public function __construct(){
         $this->db = new Database();
     }
-
+    
     // danh sách sp
     public function getAllProduct(){
         $sql = "SELECT products.id, products.name, products.price, products.price_sale, products.category_id, products.stock

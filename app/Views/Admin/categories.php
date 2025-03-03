@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
 <style>
-    
+
 </style>
 
 <head>
-<meta charset="utf-8">
+    <meta charset="utf-8">
     <title>BestBalo - Website bán balo hàng đầu VN</title>
     <meta name="author" content="themesflat.com">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -17,7 +17,21 @@
     <link rel="stylesheet" type="text/css" href="assets/Admin/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="assets/Admin/css/styles.css">
 
-
+    <style>
+        .thongbao {
+            color: rgb(22, 88, 10);
+            font-style: italic;
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            margin: 10px 0;
+            padding: 5px;
+            border-left: 3px solid rgb(43, 138, 5);
+            background-color:rgb(208, 254, 177);
+            letter-spacing: 2px;
+            font-size: 15px;
+        }
+    </style>
 
     <!-- Font -->
     <link rel="stylesheet" href="assets/Admin/font/fonts.css">
@@ -30,6 +44,7 @@
     <link rel="apple-touch-icon-precomposed" href="assets\Admin\images\logo_bestbalo.png">
 
 </head>
+
 <body>
 
     <!-- #wrapper -->
@@ -58,14 +73,15 @@
                         <!-- main-content-wrap -->
                         <div class="main-content-inner">
                             <!-- main-content-wrap -->
-                            <div class="main-content-wrap"> 
-                            <div class="wg-box">
-                                <?php 
-                                    if(isset($_SESSION['message'])){
-                                            echo "<p>" . $_SESSION['message'] . "</p>";
-                                            unset($_SESSION['message']);
-                                        }
-                                ?>
+                            <div class="main-content-wrap">
+                                <div class="wg-box">
+                                    <?php
+                                    if (isset($_SESSION['message'])) {
+                                        echo "<p class='thongbao'>" . $_SESSION['message'] . "</p>";
+                                        unset($_SESSION['message']);
+                                    }
+                                    ?>
+
                                     <div class="title-box">
                                         Danh sách Danh mục sản phẩm
                                     </div>
@@ -91,41 +107,42 @@
                                                 </div>
                                             </form>
                                         </div>
-                                        <a class="tf-button style-1 w208" 
+                                        <a class="tf-button style-1 w208"
                                             href="?role=admin&act=add-category"><i class="icon-plus"></i>Thêm Danh Mục</a>
                                     </div>
                                     <div class="wg-table table-product-list">
                                         <ul class="table-title flex gap20 mb-14">
                                             <li>
                                                 <div class="body-title">STT</div>
-                                            </li>    
+                                            </li>
                                             <li>
                                                 <div class="body-title">Tên Danh Mục</div>
-                                            </li>   
+                                            </li>
                                             <li>
                                                 <div class="body-title">Hình ảnh</div>
-                                            </li>                                          
+                                            </li>
                                             <li>
                                                 <div class="body-title">Hoạt động</div>
                                             </li>
                                         </ul>
                                         <ul class="flex flex-column">
-                                            <?php foreach($listCategory as $key => $value): ?>
+                                            <?php foreach ($listCategory as $key => $value): ?>
                                                 <li class="wg-product item-row ">
-                                                    <div style="font-size:20px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $key+ 1?></div>
-                                                    <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $value->name?></div>
+                                                    <div style="font-size:20px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $key + 1 ?></div>
+                                                    <div style="font-size:15px;font-weight: bold;" class="body-text text-main-dark mt-4"><?= $value->name ?></div>
                                                     <div class="body-text text-main-dark mt-4">
                                                         <img src="<?= $value->image ?>" alt="" width="50">
-                                                    </div>              
+                                                    </div>
                                                     <div class="list-icon-function">
-                                                        
+
                                                         <div class="item edit">
                                                             <a href="?role=admin&act=update-category&id=<?= $value->id ?>">
                                                                 <i class="icon-edit-3"></i>
                                                             </a>
                                                         </div>
                                                         <div class="item trash">
-                                                            <a href="?role=admin&act=delete-category&id=<?= $value->id ?>">
+                                                            <a href="?role=admin&act=delete-category&id=<?= $value->id ?>"
+                                                                onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này không?');">
                                                                 <i class="icon-trash-2"></i>
                                                             </a>
                                                         </div>
@@ -156,21 +173,21 @@
                                     </div>
                                 </div>
                             </div>
-                            </div>
-                            <!-- /main-content-wrap -->
                         </div>
                         <!-- /main-content-wrap -->
-                        <!-- bottom-page -->
-                        <?php include 'app/Views/Admin/layouts/footer.php' ?>
-                        <!-- /bottom-page -->
                     </div>
-                    <!-- /main-content -->
+                    <!-- /main-content-wrap -->
+                    <!-- bottom-page -->
+                    <?php include 'app/Views/Admin/layouts/footer.php' ?>
+                    <!-- /bottom-page -->
                 </div>
-                <!-- /section-content-right -->
+                <!-- /main-content -->
             </div>
-            <!-- /layout-wrap -->
+            <!-- /section-content-right -->
         </div>
-        <!-- /#page -->
+        <!-- /layout-wrap -->
+    </div>
+    <!-- /#page -->
     </div>
     <!-- /#wrapper -->
 
