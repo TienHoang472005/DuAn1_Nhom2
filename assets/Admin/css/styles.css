@@ -659,6 +659,68 @@ h6,
 
 /* Extra classes
 -------------------------------------------------------------- */
+
+.dashboard-card {
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  max-width: 300px;
+  display: flex;
+  align-items: center;
+  border-left: 6px solid #4CAF50;
+  transition: transform 0.2s ease-in-out;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.dashboard-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.dashboard-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.revenue-card {
+  border-left-color: #4CAF50;
+}
+.revenue-icon {
+  background: #4CAF50;
+}
+
+.orders-card {
+  border-left-color: #FF9800;
+}
+.orders-icon {
+  background: #FF9800;
+}
+
+.dashboard-title {
+  margin: 0;
+  font-size: 16px;
+  color: #555;
+}
+
+.dashboard-value {
+  margin: 5px 0 0;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+}
+
 .hidden {
   display: none;
 }

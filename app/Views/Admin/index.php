@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="assets\Admin\images\logo_bestbalo.png" xml:lang="en-US" lang="en-US">
+
 <head>
-    
+
     <meta charset="utf-8">
     <title>BestBalo - Website bán balo hàng đầu VN</title>
     <meta name="author" content="themesflat.com">
@@ -56,10 +57,45 @@
                         <!-- main-content-wrap -->
                         <div class="main-content-inner">
                             <!-- main-content-wrap -->
-                            <div class="main-content-wrap"> 
+                            <div class="main-content-wrap">
                                 <div class="wg-box">
                                     Dashboard
                                 </div>
+
+                                <div class="dashboard-container">
+                                    <!-- Card Doanh Thu -->
+                                    <div class="dashboard-card revenue-card">
+                                        <div class="dashboard-icon revenue-icon">
+                                            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-2h2v2zm4-4h-6v-2h6v2zm0-4h-6V7h6v2z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="dashboard-title">Doanh Thu</h4>
+                                            <p class="dashboard-value">
+                                                <?= number_format($revenue, 0, ',', '.') . ' VND' ?>
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card Số Đơn Hàng -->
+                                    <div class="dashboard-card orders-card">
+                                        <div class="dashboard-icon orders-icon">
+                                            <svg width="24" height="24" fill="white" viewBox="0 0 24 24">
+                                                <path d="M21 6h-3V4c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2v2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zM8 4h8v2H8V4zm11 16H5V8h14v12z" />
+                                            </svg>
+                                        </div>
+                                        <div>
+                                            <h4 class="dashboard-title">Số Đơn Hàng</h4>
+                                            <p class="dashboard-value">
+                                                <?= number_format($totalOrders, 0, ',', '.') . ' Đơn' ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                             <!-- /main-content-wrap -->
                         </div>
