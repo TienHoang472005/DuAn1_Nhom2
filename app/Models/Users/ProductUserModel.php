@@ -104,7 +104,7 @@ class ProductUserModel {
             $stmt->bindParam(':product_id', $_POST['productId']);  
         }  
 
-        return $stmt->execute();
+        // return $stmt->execute();
 
 
         $productId = $_POST['productId'];
